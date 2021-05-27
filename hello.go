@@ -6,6 +6,7 @@ import (
 
 	"example.com/greetings"
 	"example.com/morestrings"
+	"github.com/google/go-cmp/cmp"
 	"rsc.io/quote"
 )
 
@@ -29,4 +30,6 @@ func main() {
 			fmt.Println(morestrings.ReverseRunes(msgs[name]))
 		}
 	}
+
+	fmt.Println(cmp.Diff("hello world", "Hello World"))
 }
