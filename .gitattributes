@@ -1,0 +1,2 @@
+#set eol
+go.mod text eol=lf

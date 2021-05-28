@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"log"
 
-	"example.com/greetings"
 	"example.com/morestrings"
 	"github.com/google/go-cmp/cmp"
+	"github.com/leiwang008/greetings"
 	"rsc.io/quote"
 )
 
