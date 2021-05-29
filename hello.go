@@ -32,4 +32,18 @@ func main() {
 	}
 
 	fmt.Println(cmp.Diff("hello world", "Hello World"))
+
+	a := 12
+	b := 4
+	fmt.Printf("morestrings.Add(%v, %v) = %v \n", a, b, morestrings.Add(a, b))
+
+	x := "World"
+	y := "Hello"
+	m, n := greetings.Swap(x, y)
+	fmt.Printf("greetings.Swap(%v, %v)= %v, %v \n", x, y, m, n)
+
+	const Pi = 3.14
+	const Wd = "Word"
+	const T = true
+	fmt.Printf("Pi is type %T\nWd is type %T\nT is type %T", Pi, Wd, T)
 }

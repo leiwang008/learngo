@@ -1,7 +1,7 @@
 github.com/google/go-cmp v0.5.6 h1:BKbKCqvP6I+rmFHt06ZmyQtvB8xAkWdhFyr0ZUNZcxQ=
 github.com/google/go-cmp v0.5.6/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
-github.com/leiwang008/greetings v0.0.1 h1:VeE0aln1TThE4w0vX8Tyum8T0dpddDRTu67HG2J0dBQ=
-github.com/leiwang008/greetings v0.0.1/go.mod h1:OTPJyGHGrI5/WjURiCE8RuajBzZmUgwIhCgLsyIFCHk=
+github.com/leiwang008/greetings v0.0.2 h1:8gFgr0aWiq9ONPXN6NqgqGwdrUAMh2s0an7WAECFk24=
+github.com/leiwang008/greetings v0.0.2/go.mod h1:OTPJyGHGrI5/WjURiCE8RuajBzZmUgwIhCgLsyIFCHk=
 golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c h1:qgOY6WgZOaTkIIMiVjBQcw93ERBE4m30iBm00nkL0i8=
 golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543 h1:E7g+9GITq07hpfrRu66IVDexMakfv52eLZ2CXBWiKr4=
