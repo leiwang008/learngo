@@ -49,17 +49,17 @@ func main() {
 
 	a := 12
 	b := 4
-	fmt.Printf("morestrings.Add(%v, %v) = %v \n", a, b, morestrings.Add(a, b))
+	fmt.Printf("morestrings.Add(%v, %v) = %v \n\n", a, b, morestrings.Add(a, b))
 
 	x := "World"
 	y := "Hello"
 	m, n := utils.Swap(x, y)
-	fmt.Printf("utils.Swap(%v, %v)= %v, %v \n", x, y, m, n)
+	fmt.Printf("utils.Swap(%v, %v)= %v, %v \n\n", x, y, m, n)
 
 	const Pi = 3.14
 	const Wd = "Word"
 	const T = true
-	fmt.Printf("Pi %v is type %T\nWd %v is type %T\nT %v is type %T\n", Pi, Pi, Wd, Wd, T, T)
+	fmt.Printf("Pi %v is type %T\nWd %v is type %T\nT %v is type %T\n\n", Pi, Pi, Wd, Wd, T, T)
 
 	learnConstant()
 	learnLoop()
@@ -77,7 +77,7 @@ func initLog() (*os.File, error) {
 	fmt.Printf("open file %v ", file)
 	// defer file.Close()
 	log.SetOutput(file)
-	log.SetFlags(log.Llongfile | log.Ldate | log.Ltime)
+	log.SetFlags(log.Lshortfile | log.Ldate | log.Ltime)
 
 	log.Println("started ")
 
@@ -99,21 +99,22 @@ func learnConstant() {
 	// fmt.Println(needInt(Big))
 	fmt.Printf("int Small=%v, the type is %T\n", needInt(Small), needInt(Small))
 	fmt.Printf("float Big=%v, the type is %T\n", needFloat(Big), needFloat(Big))
-	fmt.Printf("float Small=%v, the type is %T\n", needFloat(Small), needFloat(Small))
+	fmt.Printf("float Small=%v, the type is %T\n\n", needFloat(Small), needFloat(Small))
 }
 func learnLoop() {
 	sum := 0
 	for i := 1; i < 10; i++ {
 		sum = sum + i
 	}
-	fmt.Printf("the addition is %d", sum)
+	fmt.Printf("the addition is %d\n", sum)
 }
 
 func learnSwitch() {
+	debugmsg := debugmsg(true)
 
 	os, found := os.LookupEnv("GOOS")
 	if !found || os == "" {
-		log.Printf("found %v, os %v\n", found, os)
+		log.Printf(debugmsg+"found %v, os %v\n", found, os)
 		os = runtime.GOOS
 	}
 	fmt.Print("go runs on ")
@@ -125,13 +126,29 @@ func learnSwitch() {
 	default:
 		fmt.Printf("%v os\n", os)
 	}
+
+	//
+	day := time.Tuesday
+	fmt.Printf("\nWhen is %v?", day)
+	switch day {
+	case time.Now().Weekday():
+		fmt.Println("It is today.")
+	case time.Now().Weekday() + 1:
+		fmt.Println("It is tomorrow.")
+	case time.Now().Weekday() + 2:
+		fmt.Println("In two days.")
+	default:
+		fmt.Println("Too far away")
+	}
+	fmt.Println()
+
 }
 
 func learnFor() {
 	fmt.Println("sqrt(2)=" + sqrt(2) + "\nsqrt(-4)=" + sqrt(-4))
 
 	f := 569.0
-	fmt.Printf("sqrt2(%v)=%v\n", f, sqrt2(f))
+	fmt.Printf("sqrt2(%v)=%v\n\n", f, sqrt2(f))
 }
 
 func sqrt(x float64) string {
