@@ -77,7 +77,9 @@ func main() {
 	learnSlice2()
 	learnpic()
 	learnCountWord()
-
+	learnNilSlice()
+	learnFunction()
+	learnInterface()
 }
 
 func initLog() (*os.File, error) {
@@ -315,7 +317,7 @@ func learnSlice() {
 }
 
 func printSlice(slice []int) {
-	fmt.Printf("slice=%v length=%v, capacity=%v\n", slice, len(slice), cap(slice))
+	fmt.Printf("slice=%v length=%v, capacity=%v, address=%p\n", slice, len(slice), cap(slice), &slice)
 }
 
 func learnSlice2() {
@@ -356,8 +358,10 @@ func learnCountWord() {
 }
 
 func wordCount(text string) map[string]int {
+	//create a map containing pair("word", count)
 	counts := make(map[string]int)
 
+	//break the text into words by spaces
 	tokens := strings.Fields(text)
 	for _, token := range tokens {
 		count, ok := counts[token]
@@ -368,4 +372,175 @@ func wordCount(text string) map[string]int {
 		}
 	}
 	return counts
+}
+
+func learnNilSlice() {
+	var slice []int
+	slice = make([]int, 0, 5)
+	printSlice(slice)
+
+	s1 := slice[:2]
+	printSlice(s1)
+
+	s2 := slice[2:5]
+	printSlice(s2)
+
+	var s []int
+	s = make([]int, 2)
+	printSlice(s)
+
+	// append works on nil slices.
+	s = append(s, 0)
+	printSlice(s)
+
+	// The slice grows as needed.
+	s = append(s, 1)
+	printSlice(s)
+
+	// We can add more than one element at a time.
+	s = append(s, 2, 3, 4)
+	printSlice(s)
+
+	m := map[string]utils.EarthCoordinates{
+		"Bell Labs": {
+			Lat: 40.68433, Long: -74.39967,
+		},
+		"Google": {
+			Lat: 37.42202, Long: -122.08408,
+		},
+	}
+	fmt.Printf("%+v\n", m)
+
+	pos, neg := adder(), adder()
+	for i := 0; i < 10; i++ {
+		fmt.Println(
+			pos(i),
+			neg(-2*i),
+		)
+	}
+
+	f := fibonacci()
+	for i := 2; i < 10; i++ {
+		fmt.Println(f())
+	}
+
+	f2 := func(x, y float64) float64 {
+		return math.Sqrt(x*x + y*y)
+	}
+
+	fmt.Printf("f2(%v,%v)=%v\n", 8, 9, f2(8, 9))
+	fmt.Printf("compute(%v,%v)=%v\n", 8, 9, compute(f2, 8, 9))
+	fmt.Printf("compute(%v,%v)=%v\n", 8, 9, compute(math.Pow, 8, 9))
+
+	//methods with pointer receivers take either a value or a pointer as the receiver when they are called
+	//ec is defined as a value, ecAddr is defined as a pointer; they both can be used to call EarthCoordinates.Scale() equally
+	ec := utils.EarthCoordinates{Lat: 45.43, Long: 76.30}
+	scale := 10.0
+	fmt.Printf("ec: %v.Sacle(%v)=", ec, scale)
+	ec.Scale(scale)
+	fmt.Printf("%v\n", ec)
+
+	ecAddr := &utils.EarthCoordinates{Lat: 45.43, Long: 76.30}
+	fmt.Printf("ec2: %v.Sacle(%v)=", *ecAddr, scale)
+	ecAddr.Scale(10)
+	fmt.Printf("%v\n", *ecAddr)
+
+}
+
+func Scale(ec *utils.EarthCoordinates, s float64) {
+	ec.Lat = ec.Lat * s
+	ec.Long = ec.Long * s
+}
+
+func adder() func(int) int {
+	sum := 0
+	return func(x int) int {
+		sum += x
+		return sum
+	}
+}
+
+// fibonacci is a function that returns
+// a function that returns an int.
+func fibonacci() func() int {
+	previous := 1
+	pprevious := 0
+
+	return func() int {
+
+		result := previous + pprevious
+		pprevious = previous
+		previous = result
+
+		return result
+	}
+}
+
+func compute(calc func(float64, float64) float64, x float64, y float64) float64 {
+	return calc(x, y)
+}
+
+func learnFunction() {
+	//define 2 variables with interface
+	var sq utils.Sqrter
+	var sc utils.Scaler
+
+	//instantiate an EarthCoordinates
+	ec := utils.EarthCoordinates{Lat: 45.43, Long: 76.30}
+
+	//assign EarthCoordinates to 'Sqrter' interface variable
+	sq = ec
+	fmt.Printf("%v.Sqrt()=%v\n", sq, sq.Sqrt())
+
+	//assign EarthCoordinates to 'Scaler' interface variable
+	sc = &ec
+	fmt.Printf("%v.Scaler(10)=", sq)
+	sc.Scale(10)
+	fmt.Printf("%v\n", sc)
+
+}
+
+type I interface {
+	M()
+}
+
+type T struct {
+	S string
+}
+
+func (t *T) M() {
+	fmt.Println(t.S)
+}
+
+type F float64
+
+func (f F) M() {
+	fmt.Println(f)
+}
+
+func learnInterface() {
+	var i I
+
+	i = &T{"Hello"}
+	describe(i)
+	i.M()
+
+	i = F(math.Pi)
+	describe(i)
+	i.M()
+
+	var ei EI
+	desc(ei)
+	desc(10)
+	desc("hello")
+}
+
+func describe(i I) {
+	fmt.Printf("(%v, %T)\n", i, i)
+}
+
+type EI interface{}
+
+func desc(ei EI) {
+	fmt.Printf("(%v, %T)\n", ei, ei)
 }

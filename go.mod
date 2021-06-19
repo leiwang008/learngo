@@ -11,3 +11,5 @@ require (
 )
 
 replace example.com/morestrings => ../morestrings
+
+replace github.com/leiwang008/utils => ../utils
