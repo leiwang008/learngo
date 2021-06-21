@@ -17,7 +17,8 @@ func main() {
 	dest := os.Args[2]
 	utils.Verbose, _ = strconv.ParseBool(os.Args[3])
 	checkDate, _ := strconv.ParseBool(os.Args[4])
+	copy, _ := strconv.ParseBool(os.Args[5])
 
-	utils.MoveFiles(source, dest, checkDate)
+	utils.MoveFiles(source, dest, checkDate, copy)
 
 }

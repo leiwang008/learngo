@@ -10,9 +10,10 @@
             "request": "launch",
             "mode": "auto",
             "program": "${fileDirname}",
-            // "args": ["C:\\temp\\101APPLE", "Z:\\picture\\2021", "true"],
-            // "args": ["C:\\temp\\101APPLE", "C:\\temp\\dest"],
-            "args": ["C:\\temp\\DCIM", "C:\\temp\\dest", "true", "false"],
+            // "args": ["C:\\temp\\101APPLE", "C:\\temp\\dest", "true", "true", "true"],
+            "args": ["C:\\temp\\DCIM", "C:\\temp\\dest", "true", "false", "true"],
+            // "args": ["C:\\temp\\101APPLE", "Z:\\picture", "true", "true", "true"],
+            // "args": ["C:\\temp\\DCIM", "Z:\\picture", "true", "false", "true"],
         }
     ]
 }
