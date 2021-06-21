@@ -19,7 +19,7 @@ import (
 	"rsc.io/quote"
 )
 
-func main() {
+func main3() {
 	debugmsg := utils.Debugmsg(true)
 
 	file, err := initLog()
