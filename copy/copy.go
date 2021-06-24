@@ -19,6 +19,6 @@ func main() {
 	checkDate, _ := strconv.ParseBool(os.Args[4])
 	copy, _ := strconv.ParseBool(os.Args[5])
 
-	utils.MoveFiles(source, dest, checkDate, copy)
+	utils.HandleFiles(source, dest, checkDate, copy)
 
 }

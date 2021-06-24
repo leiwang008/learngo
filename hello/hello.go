@@ -11,7 +11,6 @@ import (
 	"strings"
 	"time"
 
-	"example.com/morestrings"
 	"github.com/google/go-cmp/cmp"
 	"github.com/leiwang008/utils"
 	"golang.org/x/tour/pic"
@@ -19,7 +18,7 @@ import (
 	"rsc.io/quote"
 )
 
-func main3() {
+func main() {
 	debugmsg := utils.Debugmsg(true)
 
 	file, err := initLog()
@@ -44,7 +43,7 @@ func main3() {
 	} else {
 		fmt.Println(msgs)
 		for _, name := range names {
-			fmt.Println(morestrings.ReverseRunes(msgs[name]))
+			fmt.Println(utils.ReverseRunes(msgs[name]))
 		}
 	}
 
@@ -52,7 +51,7 @@ func main3() {
 
 	a := 12
 	b := 4
-	fmt.Printf("morestrings.Add(%v, %v) = %v \n\n", a, b, morestrings.Add(a, b))
+	fmt.Printf("utils.Add(%v, %v) = %v \n\n", a, b, utils.Add(a, b))
 
 	x := "World"
 	y := "Hello"
@@ -84,7 +83,7 @@ func main3() {
 
 func initLog() (*os.File, error) {
 	//create a log file
-	filename := "./log/hello" + strconv.FormatInt(time.Now().Unix(), 10) + ".log"
+	filename := "../log/hello" + strconv.FormatInt(time.Now().Unix(), 10) + ".log"
 	file, err := os.Create(filename)
 	if err != nil || file == nil {
 		return nil, errors.New(fmt.Sprintf("Cannot open log file %v, due to %v", filename, err))
