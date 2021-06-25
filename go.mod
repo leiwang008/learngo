@@ -9,4 +9,5 @@ require (
 	rsc.io/quote v1.5.2
 )
 
+// This "replace" directive refer to local module, is for local debug purpose
 replace github.com/leiwang008/utils => ../utils
