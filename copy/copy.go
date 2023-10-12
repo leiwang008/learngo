@@ -74,7 +74,7 @@ func usage() {
 	// --overwrite, -ov
 	fmt.Fprintf(os.Stdout, `copy version: copy/1.0.0
 Usage: copy [-h] [-s source] [-d destination] [-v] [-ck] [-cp] [-ov]
-Options: --help, -h
+Options:
 `)
 	flag.PrintDefaults()
 }
